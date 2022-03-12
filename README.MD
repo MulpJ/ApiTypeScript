@@ -1,4 +1,4 @@
-# **BackendJS** 🎢💻
+# **BackendTS** 🎢💻
 
 ## **Rotas**
 
