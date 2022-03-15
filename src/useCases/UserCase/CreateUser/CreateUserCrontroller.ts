@@ -14,9 +14,9 @@ export class CreateUserController {
       
       const user = await this.createUser.execute({
         name,
-        email,
+        email: email.toLowerCase(),
         money:0,
-        password,
+        password: password.toLowerCase(),
         plan
       })
 

@@ -11,7 +11,8 @@ export class GetUserController {
       const { email, password } = req.params
       if(!email || !password) throw new Error("Informações incorretas")
       
-      const user = await this.getUser.execute({ email, password })
+      const user = await this.getUser.execute({
+        email:email.toLowerCase(), password:password.toLowerCase() })
 
       return res.status(200).json(user)
     } catch (error) {
