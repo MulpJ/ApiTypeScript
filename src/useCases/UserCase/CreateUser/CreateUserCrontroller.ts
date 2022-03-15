@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import { send } from "../../MailCase/Send";
+import { Send } from "../../MailCase/Send/Send";
 import { CreateUser } from "./CreateUser";
 
 export class CreateUserController {
@@ -20,6 +22,7 @@ export class CreateUserController {
         plan
       })
 
+      send.execute({email, sub:"Bem Vindo 😁😍", text:`Bem vindo ${name}😋! Aproveite Nossos filmes e series na nossa plataforma!😁`})
       return res.status(201).json({user})
     } catch (error) {
       return res.json({

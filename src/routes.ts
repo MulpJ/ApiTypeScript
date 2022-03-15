@@ -1,6 +1,7 @@
 // * Importando o metodo ROUTER do express
 import { Router } from "express";
 import { AuthenticateVerify } from "./middlewares/AuthenticateVerify";
+import { sendcontroller } from "./useCases/MailCase/Send";
 
 // ! Codigos
 import { createUserController } from "./useCases/UserCase/CreateUser";
@@ -30,6 +31,10 @@ router.put('/user',  async (req, res) => {
 // ? Rota para o usuario ganhar dinheiro
 router.put('/user/gain', AuthenticateVerify, async (req, res) => {
   return await gainUserController.handle(req, res)
+})
+
+router.post('/mail',  async (req, res) => {
+  return await sendcontroller.handle(req, res)
 })
 
 

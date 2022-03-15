@@ -1,5 +1,7 @@
 type IMail = {
-  test:string
+  email: string,
+  sub:string,
+  text: string
 }
 
 export interface IMailRepository {
