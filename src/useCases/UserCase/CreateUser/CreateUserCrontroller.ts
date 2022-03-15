@@ -10,6 +10,8 @@ export class CreateUserController {
     const { name, email, password, plan } = req.body
   
     try {
+      if(!name || !email || !password || !plan) throw new Error("Informações incorretas")
+      
       const user = await this.createUser.execute({
         name,
         email,
@@ -20,7 +22,7 @@ export class CreateUserController {
 
       return res.status(201).json({user})
     } catch (error) {
-      return res.status(400).json({
+      return res.json({
         error: error.message || "Unexpected error."
       })
     }

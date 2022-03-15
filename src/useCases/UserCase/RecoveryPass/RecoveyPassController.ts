@@ -7,11 +7,12 @@ export class RecoveyPassController {
   ) {}
 
   async handle(req: Request, res: Response) {
-    const { email, passwordAnt, newPassword } = req.body
+    const { email, password } = req.body
     
     try {
 
-      const result = await this.RecoveryPass.execute({email, passwordAnt, newPassword})
+      const result = await this.RecoveryPass.execute({email, password})
+      
       res.status(200).json(result)
 
     } catch (error) {
@@ -20,4 +21,5 @@ export class RecoveyPassController {
       })
     }
   }
+  
 }

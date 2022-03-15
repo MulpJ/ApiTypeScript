@@ -19,5 +19,5 @@ export interface IUserRepository {
   generateToken(data: ITokenData): Promise<string>
   verifyPass(pass: string, passU:string): Promise<any>
   recoveyPass(email: string, pass: string): Promise<INewPass>
-  gain(id: number, amont: number): Promise<any>
+  gain(email: string, amont: number): Promise<any>
 }

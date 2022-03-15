@@ -8,11 +8,9 @@ export class RecoveryPass {
 
   async execute(data: IRecoveyPassDTO) {
     const user = await this.userRepository.findByEmail(data.email)
-    if(!user) throw new Error("User not Find.")
-    const testpass = await this.userRepository.verifyPass(data.passwordAnt, user.password)
-    if(!testpass) throw new Error("Password is invalid.")
+    if(!user) throw new Error("Usuario não encontrado.")
 
-    const result = await this.userRepository.recoveyPass(data.email, data.newPassword)
+    const result = await this.userRepository.recoveyPass(data.email, data.password)
     return result
   }
 }

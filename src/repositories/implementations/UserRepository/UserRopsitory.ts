@@ -88,10 +88,10 @@ export class UserRopsitory implements IUserRepository {
     return res;
   }
 
-  async gain(id: number, amont: number): Promise<any> {
+  async gain(email: string, amont: number): Promise<any> {
     const res = await this.prisma.user.update({
       where: {
-        id
+        email
       },
       data: {
         money: amont,

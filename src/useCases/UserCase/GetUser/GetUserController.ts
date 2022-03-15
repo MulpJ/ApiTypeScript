@@ -9,12 +9,13 @@ export class GetUserController {
   async handle(req: Request, res: Response) {
     try {
       const { email, password } = req.params
-
+      if(!email || !password) throw new Error("Informações incorretas")
+      
       const user = await this.getUser.execute({ email, password })
 
       return res.status(200).json(user)
     } catch (error) {
-      return res.status(400).json({
+      return res.json({
         error: error.message || "Unexpected error."
       })
     }

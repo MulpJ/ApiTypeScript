@@ -9,6 +9,7 @@ export class GainUserController {
   async handle(req: Request, res: Response) {
    const { userID,  amount } = req.body
    try {
+    if(!amount) throw new Error("Quantia invalida")
     const money = await this.gainUser.execute({amonut: amount, userID})
 
     return res.status(201).json(money)

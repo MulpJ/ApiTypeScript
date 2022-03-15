@@ -9,7 +9,7 @@ export class CreateUser {
 
   async execute(data: ICreateUserDTO) {
     const userAlereadyExists = await this.userRepository.findByEmail(data.email)
-    if (userAlereadyExists) throw new Error('User already exists.')
+    if (userAlereadyExists) throw new Error('Email Já Cadastrado por outro usuario.')
 
     const user = new User(
       data.name,

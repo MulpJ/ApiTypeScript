@@ -11,7 +11,7 @@ export class GainUser {
     const user = await this.userRepository.findByUser(userid)
     const amount = user.money + data.amonut
 
-    const res = await this.userRepository.gain(userid, amount)
+    const res = await this.userRepository.gain(user.email, amount)
 
     return res
   }
