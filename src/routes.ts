@@ -2,6 +2,9 @@
 import { Router } from "express";
 import { AuthenticateVerify } from "./middlewares/AuthenticateVerify";
 import { sendcontroller } from "./useCases/MailCase/Send";
+import { categoryController } from "./useCases/MovieCase/Categories";
+import { getMovieCategoryController } from "./useCases/MovieCase/GetMovieCategory";
+import { getMoviePopuController } from "./useCases/MovieCase/GetMoviePopu";
 
 // ! Codigos
 import { createUserController } from "./useCases/UserCase/CreateUser";
@@ -37,6 +40,17 @@ router.post('/mail',  async (req, res) => {
   return await sendcontroller.handle(req, res)
 })
 
+router.get('/movie/popu',  async (req, res) => {
+  return await getMoviePopuController.handle(req, res)
+})
+
+router.get('/movie/category/:category',  async (req, res) => {
+  return await getMovieCategoryController.handle(req, res)
+})
+
+router.get('/movie/category',  async (req, res) => {
+  return await categoryController.handle(req, res)
+})
 
 // ! Exportando as rotas para o app
 export { router }
