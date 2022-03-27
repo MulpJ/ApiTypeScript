@@ -10,7 +10,8 @@ export class RecoveryPass {
   async execute(data:IRecoveyPassDTO) {
     const email = data.email
     const token = await this.tokenRepo.token(email, '1d')
-    await send.execute({ email , sub:"Troca de senha 🛂", text:`Você solicitou a troca de senha, se não foi você não se preocupe! link: http://localhost:3000/recovery/${token}`})
+    const ok = token.split('.')
+    await send.execute({ email , sub:"Troca de senha 🛂", text:`Você solicitou a troca de senha, se não foi você não se preocupe! link: http://localhost:3000/recovery/${ok[1]}/${ok[2]}`})
     return token
   }
 }
